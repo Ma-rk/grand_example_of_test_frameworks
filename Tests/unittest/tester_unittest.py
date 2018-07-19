@@ -22,6 +22,9 @@ class TesterUnittest(unittest.TestCase):
             , 'D:\Download\installed\py_calc_test.py'
             , 'D:\Download\installed\Readme_License.html'
             , 'D:\Download\installed\VSCodeSetup-x64-1.25.0.exe']
+        self.trimmed_list = ['D:\Download\installed\calc.py'
+            , 'D:\Download\installed\HandPy.py'
+            , 'D:\Download\installed\py_calc_test.py']
 
     def test_get_file_full_name_list(self):
         self.executor.get_file_full_name_list()
