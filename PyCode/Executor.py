@@ -15,6 +15,14 @@ class Executor:
             full_file_name = os.path.join(self.dir_path, file_name)
             self.file_full_name_list.append(full_file_name)
 
+    def remove_not_py_from_list(self):
+        trimmed_list = []
+        for file_name in self.file_full_name_list:
+            if file_name.endswith('.py'):
+                trimmed_list.append(file_name)
+
+        self.file_full_name_list = trimmed_list
+
     def display_all_file_name(self):
         print('... display_all_file_name')
         for file_name in self.file_full_name_list:
