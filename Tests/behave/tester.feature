@@ -13,3 +13,9 @@ Feature: tests Executor
     When 파일목록 조회 read the list of files
     Then 주어진 목록과 조회한 목록이 일치 both of given list and actual list are equal
 
+
+  Scenario: 파일목록에서 .py가 아닌 항목 제거하기
+    Given 1. 파일목록, 2. .py가 아닌 항목 제거한 목록
+    When 파일목록에서 .py가 아닌 항목을 제거했을 때
+    Then 작업한 목록과 주어진 목록이 일치
+
