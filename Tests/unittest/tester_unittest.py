@@ -32,3 +32,12 @@ class TesterUnittest(unittest.TestCase):
 
         for i in range(len(self.file_full_name_list)):
             self.assertEqual(self.file_full_name_list[i], self.executor.file_full_name_list[i])
+
+    def test_remove_not_py_from_list(self):
+        self.executor.file_full_name_list = self.file_full_name_list
+        self.executor.remove_not_py_from_list()
+
+        self.assertEqual(len(self.trimmed_list), len(self.executor.file_full_name_list))
+
+        for i in range(len(self.trimmed_list)):
+            self.assertEqual(self.trimmed_list[i], self.executor.file_full_name_list[i])
