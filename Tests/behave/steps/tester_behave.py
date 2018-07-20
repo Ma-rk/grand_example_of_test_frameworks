@@ -1,6 +1,7 @@
 from behave import *
 
 from PyCode.Executor import Executor
+from PyCode.FileInfoContainer import FileInfoContainer
 
 
 @given('argument is "D Download installed" 인수는 "D Download installed"')
@@ -85,3 +86,20 @@ def step_impl(context):
     given_list = context.trimmed_list
     trimmed_list = context.executor.file_full_name_list
     assert given_list == trimmed_list
+
+
+@given('대상파일 경로 D Download installed py_calc_test.py')
+def step_impl(context):
+    context.file_path = 'D:\Download\installed\py_calc_test.py'
+
+
+@When('FileInfoContainer 클래스를 D Download installed py_calc_test.py 파일로 초기화 했을 때')
+def step_impl(context):
+    context.container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
+
+
+@Then('num_of_line: 9, num_of_method: 1, num_of_class: 0')
+def step_impl(context):
+    assert context.container.num_of_line == 9
+    assert context.container.num_of_method == 1
+    assert context.container.num_of_class == 0

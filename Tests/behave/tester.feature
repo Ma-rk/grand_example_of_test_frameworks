@@ -19,3 +19,9 @@ Feature: tests Executor
     When 파일목록에서 .py가 아닌 항목을 제거했을 때
     Then 작업한 목록과 주어진 목록이 일치
 
+
+  Scenario: FileInfoContainer 객체 초기화 하기
+    Given 대상파일 경로 D Download installed py_calc_test.py
+    When FileInfoContainer 클래스를 D Download installed py_calc_test.py 파일로 초기화 했을 때
+    Then num_of_line: 9, num_of_method: 1, num_of_class: 0
+
