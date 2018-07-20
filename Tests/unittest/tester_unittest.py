@@ -45,6 +45,10 @@ class TesterUnittest(unittest.TestCase):
 
     def test_initialize_file_info_container_instance(self):
         container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
-        assert container.num_of_line == 10
-        assert container.num_of_method == 1
-        assert container.num_of_class == 1
+        self.assertEqual(container.num_of_line, 10)
+        self.assertEqual(container.num_of_method, 1)
+        self.assertEqual(container.num_of_class, 1)
+
+    def test_get_info(self):
+        container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
+        self.assertEqual('line: 10	method: 1	class: 1', container.get_info())
