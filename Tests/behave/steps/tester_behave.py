@@ -103,3 +103,19 @@ def step_impl(context):
     assert context.container.num_of_line == 10
     assert context.container.num_of_method == 1
     assert context.container.num_of_class == 1
+
+
+@given('대상파일 경로 D Download installed py_calc_test.py 2')
+def step_impl(context):
+    context.file_path = 'D:\Download\installed\py_calc_test.py'
+    
+
+@When('container 의 get_info 를 호출했을 때')
+def step_impl(context):
+    context.container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
+    context.container_info = context.container.get_info()
+
+
+@Then('"line: 10	method: 1	class: 1" 를 반환함')
+def step_impl(context):
+    assert context.container_info == 'line: 10	method: 1	class: 1'

@@ -25,3 +25,8 @@ Feature: tests Executor
     When FileInfoContainer 클래스를 D Download installed py_calc_test.py 파일로 초기화 했을 때
     Then num_of_line: 9, num_of_method: 1, num_of_class: 0
 
+
+  Scenario: FileInfoContainer 객체의 정보 조회하기
+    Given 대상파일 경로 D Download installed py_calc_test.py 2
+    When container 의 get_info 를 호출했을 때
+    Then "line: 10	method: 1	class: 1" 를 반환함
