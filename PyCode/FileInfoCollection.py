@@ -1,0 +1,2 @@
+class FileInfoCollection:
+    pass
