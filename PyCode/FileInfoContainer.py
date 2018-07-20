@@ -17,3 +17,7 @@ class FileInfoContainer:
         self.num_of_line = len(content)
         self.num_of_method = num_of_method
         self.num_of_class = num_of_class
+
+    def get_info(self):
+        info = 'line: %s\tmethod: %s\tclass: %s' % (self.num_of_line, self.num_of_method, self.num_of_class)
+        return info
