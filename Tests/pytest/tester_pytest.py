@@ -43,7 +43,7 @@ class TestClass:
 
     def test_initialize_file_info_container_instance(self):
         container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
-        assert container.num_of_line == 9
+        assert container.num_of_line == 10
         assert container.num_of_method == 1
-        assert container.num_of_class == 0
+        assert container.num_of_class == 1
 

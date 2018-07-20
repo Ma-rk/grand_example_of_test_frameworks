@@ -100,6 +100,6 @@ def step_impl(context):
 
 @Then('num_of_line: 9, num_of_method: 1, num_of_class: 0')
 def step_impl(context):
-    assert context.container.num_of_line == 9
+    assert context.container.num_of_line == 10
     assert context.container.num_of_method == 1
-    assert context.container.num_of_class == 0
+    assert context.container.num_of_class == 1
