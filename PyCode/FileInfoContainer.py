@@ -1,0 +1,2 @@
+class FileInfoContainer:
+    pass
