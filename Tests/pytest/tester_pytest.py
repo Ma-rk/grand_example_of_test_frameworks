@@ -47,3 +47,6 @@ class TestClass:
         assert container.num_of_method == 1
         assert container.num_of_class == 1
 
+    def test_get_info(self):
+        container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
+        assert 'line: 10	method: 1	class: 1' == container.get_info()
