@@ -1,4 +1,5 @@
 from PyCode.Executor import Executor
+from PyCode.FileInfoContainer import FileInfoContainer
 
 
 class TestClass:
@@ -39,3 +40,10 @@ class TestClass:
 
         for i in range(len(self.trimmed_list)):
             assert self.trimmed_list[i] == self.executor.file_full_name_list[i]
+
+    def test_initialize_file_info_container_instance(self):
+        container = FileInfoContainer('D:\Download\installed\py_calc_test.py')
+        assert container.num_of_line == 9
+        assert container.num_of_method == 1
+        assert container.num_of_class == 0
+
