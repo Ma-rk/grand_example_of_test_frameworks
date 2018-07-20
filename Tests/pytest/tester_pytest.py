@@ -23,3 +23,10 @@ class TestClass:
         self.trimmed_list = ['D:\Download\installed\calc.py'
             , 'D:\Download\installed\HandPy.py'
             , 'D:\Download\installed\py_calc_test.py']
+
+    def test_get_file_full_name_list(self):
+        self.executor.get_file_full_name_list()
+        assert len(self.file_full_name_list) == len(self.executor.file_full_name_list)
+
+        for i in range(len(self.file_full_name_list)):
+            assert self.file_full_name_list[i] == self.executor.file_full_name_list[i]
