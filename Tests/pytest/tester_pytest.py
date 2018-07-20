@@ -30,3 +30,12 @@ class TestClass:
 
         for i in range(len(self.file_full_name_list)):
             assert self.file_full_name_list[i] == self.executor.file_full_name_list[i]
+
+    def test_remove_not_py_from_list(self):
+        self.executor.file_full_name_list = self.file_full_name_list
+        self.executor.remove_not_py_from_list()
+
+        assert len(self.trimmed_list) == len(self.executor.file_full_name_list)
+
+        for i in range(len(self.trimmed_list)):
+            assert self.trimmed_list[i] == self.executor.file_full_name_list[i]
