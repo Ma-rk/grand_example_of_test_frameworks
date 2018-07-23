@@ -25,3 +25,7 @@ class FileInfoCollection:
             file_info_container_list.append(container)
 
         return file_info_container_list
+
+    def get_collection_info(self):
+        for file_info_container in self.file_info_container_list:
+            print(file_info_container.get_info())
