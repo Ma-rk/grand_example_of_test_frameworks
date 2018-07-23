@@ -1,12 +1,11 @@
 import sys
 
-from PyCode.Executor import Executor
+from PyCode.FileInfoCollection import FileInfoCollection
 
 
 def execute(command_line_arg: str):
-    executor = Executor(command_line_arg)
-    executor.get_file_full_name_list()
-    executor.display_all_file_name()
+    collection = FileInfoCollection(command_line_arg)
+    collection.get_collection_info()
 
 
 if __name__ == '__main__':
