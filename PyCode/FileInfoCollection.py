@@ -4,6 +4,11 @@ from PyCode.FileInfoContainer import FileInfoContainer
 
 
 class FileInfoCollection:
+    def __init__(self, dir_path):
+
+        full_file_name_list = self.get_file_full_name_list(dir_path)
+        self.file_info_container_list = self.get_file_container_collection(full_file_name_list)
+
     def get_file_full_name_list(self, dir_path):
         file_name_list = os.listdir(dir_path)
         full_file_name_list = []
