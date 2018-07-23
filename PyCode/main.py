@@ -5,7 +5,7 @@ from PyCode.FileInfoCollection import FileInfoCollection
 
 def execute(command_line_arg: str):
     collection = FileInfoCollection(command_line_arg)
-    collection.get_collection_info()
+    collection.display_collection_info()
 
 
 if __name__ == '__main__':
