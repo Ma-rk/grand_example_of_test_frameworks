@@ -6,10 +6,10 @@ from PyCode.FileInfoContainer import FileInfoContainer
 class FileInfoCollection:
     def __init__(self, dir_path):
 
-        full_file_name_list = self.get_file_full_name_list(dir_path)
-        self.file_info_container_list = self.get_file_container_collection(full_file_name_list)
+        full_file_name_list = self._get_file_full_name_list(dir_path)
+        self.file_info_container_list = self._get_file_container_collection(full_file_name_list)
 
-    def get_file_full_name_list(self, dir_path):
+    def _get_file_full_name_list(self, dir_path):
         file_name_list = os.listdir(dir_path)
         full_file_name_list = []
 
@@ -22,7 +22,7 @@ class FileInfoCollection:
 
         return full_file_name_list
 
-    def get_file_container_collection(self, full_file_name_list):
+    def _get_file_container_collection(self, full_file_name_list):
         file_info_container_list = []
 
         for full_file_name in full_file_name_list:
