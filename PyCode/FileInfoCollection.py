@@ -34,7 +34,7 @@ class FileInfoCollection:
     def get(self, idx):
         if idx < 0:
             return None  # todo: 익셉션 IndexError 를 처리하도록 변경
-        if len(self.file_info_container_list) < idx:
+        if len(self.file_info_container_list) <= idx:
             return None  # todo: 익셉션 IndexError 를 처리하도록 변경
 
         return self.file_info_container_list[idx]
