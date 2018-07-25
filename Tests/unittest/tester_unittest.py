@@ -19,6 +19,9 @@ class TesterUnittest(unittest.TestCase):
     def test_collection(self):
         collection = FileInfoCollection('D:\Download\installed')
 
+        container = collection.get(-1)
+        self.assertEqual(container, None)
+
         container = collection.get(0)
         self.assertEqual(container.num_of_line, 26)
         self.assertEqual(container.num_of_method, 4)
@@ -33,3 +36,6 @@ class TesterUnittest(unittest.TestCase):
         self.assertEqual(container.num_of_line, 10)
         self.assertEqual(container.num_of_method, 1)
         self.assertEqual(container.num_of_class, 1)
+
+        container = collection.get(3)
+        self.assertEqual(container, None)

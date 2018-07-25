@@ -16,6 +16,9 @@ class TestClass:
     def test_collection(self):
         collection = FileInfoCollection('D:\Download\installed')
 
+        container = collection.get(-1)
+        assert container is None
+
         container = collection.get(0)
         assert container.num_of_line == 26
         assert container.num_of_method == 4
@@ -30,3 +33,6 @@ class TestClass:
         assert container.num_of_line == 10
         assert container.num_of_method == 1
         assert container.num_of_class == 1
+
+        container = collection.get(3)
+        assert container is None
