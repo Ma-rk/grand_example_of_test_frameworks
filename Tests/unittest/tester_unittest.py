@@ -6,7 +6,7 @@ from PyCode.Helper import Helper
 
 class TesterUnittest(unittest.TestCase):
     def test_generate_content_list(self):
-        content_pair_list = Helper.generate_content_list('D:\Download\installed')
+        content_pair_list = Helper.generate_content_list_from_file('D:\Download\installed')
         for content_pair in content_pair_list:
             self.assertEqual(len(content_pair), 2)
             self.assertEqual(type(content_pair), list)
@@ -14,7 +14,7 @@ class TesterUnittest(unittest.TestCase):
             self.assertEqual(type(content_pair[1]), list)
 
     def test_generate_container_list(self):
-        content_pair_list = Helper.generate_content_list('D:\Download\installed')
+        content_pair_list = Helper.generate_content_list_from_file('D:\Download\installed')
 
         container_list = Helper.generate_container_list(content_pair_list)
 
@@ -39,7 +39,7 @@ class TesterUnittest(unittest.TestCase):
         self.assertEqual(container.num_of_method, 1)
 
     def test_generate_collection(self):
-        collection = Helper.generate_collection('D:\Download\installed')
+        collection = Helper.generate_collection('file', 'D:\Download\installed')
 
         self.assertEqual(collection.get_container(-1), None)
 

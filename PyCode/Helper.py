@@ -16,15 +16,15 @@ class Helper:
         :param dir_path:
         :return: collection
         """
-
-        content_list = Helper.generate_content_list(dir_path)
+        
+            content_list = Helper.generate_content_list_from_file(dir_path)
         container_list = Helper.generate_container_list(content_list)
         collection = FileInfoCollection(container_list)
 
         return collection
 
     @staticmethod
-    def generate_content_list(dir_path):
+    def generate_content_list_from_file(dir_path):
         """파일명 list -> 경로+파일명 list -> 파일내용 list
 
         :param dir_path:
