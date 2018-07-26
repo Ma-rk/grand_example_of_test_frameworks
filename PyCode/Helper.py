@@ -1,9 +1,28 @@
 import os
 
+from PyCode.FileInfoCollection import FileInfoCollection
 from PyCode.FileInfoContainer import FileInfoContainer
 
 
 class Helper:
+    @staticmethod
+    def generate_collection(dir_path):
+        """ FileInfoCollection 객체를 생성하여 리턴
+
+        1. 파일명 list -> 경로+파일명 list -> 파일내용 list
+        2. container list
+        3. collection
+
+        :param dir_path:
+        :return: collection
+        """
+
+        content_list = Helper.generate_content_list(dir_path)
+        container_list = Helper.generate_container_list(content_list)
+        collection = FileInfoCollection(container_list)
+
+        return collection
+
     @staticmethod
     def generate_content_list(dir_path):
         """파일명 list -> 경로+파일명 list -> 파일내용 list
