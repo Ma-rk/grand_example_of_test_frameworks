@@ -5,6 +5,14 @@ from PyCode.Helper import Helper
 
 
 class TesterUnittest(unittest.TestCase):
+    def setUp(self):
+        self.org_generate_content_list_from_file = Helper.generate_content_list_from_file
+        self.org_generate_content_list_from_db = Helper.generate_content_list_from_db
+
+    def tearDown(self):
+        Helper.generate_content_list_from_file = self.org_generate_content_list_from_file
+        Helper.generate_content_list_from_db = self.org_generate_content_list_from_db
+
     def test_generate_content_list(self):
         content_pair_list = Helper.generate_content_list_from_file('D:\Download\installed')
         for content_pair in content_pair_list:
