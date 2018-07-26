@@ -92,4 +92,12 @@ class Helper:
 
     @staticmethod
     def generate_content_pair(full_file_name: str, lines: list):
+        """
+        >>> Helper.generate_content_pair('python.py', ['testing', 'of', 'doctest', 'is', 'being', 'executes'])
+        ['python.py', ['testing', 'of', 'doctest', 'is', 'being', 'executes']]
+
+        :param full_file_name:
+        :param lines:
+        :return:
+        """
         return [full_file_name, lines]
