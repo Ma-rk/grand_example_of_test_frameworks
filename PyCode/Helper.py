@@ -51,7 +51,8 @@ class Helper:
         for full_file_name in full_file_name_list:
             with open(full_file_name, 'r') as f:
                 content = f.readlines()
-                content_pair_list.append([full_file_name, content])
+                content_pair = Helper.generate_content_pair(full_file_name, content)
+                content_pair_list.append(content_pair)
 
         return content_pair_list
 
@@ -88,3 +89,7 @@ class Helper:
             container_list.append(container)
 
         return container_list
+
+    @staticmethod
+    def generate_content_pair(full_file_name: str, lines: list):
+        return [full_file_name, lines]
