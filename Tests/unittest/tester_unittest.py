@@ -95,8 +95,14 @@ class TesterUnittest(unittest.TestCase):
         self.assertEqual(container.num_of_line, 10)
         self.assertEqual(container.num_of_method, 1)
 
-    def test_generate_collection(self):
-        collection = Helper.generate_collection('file', 'D:\Download\installed')
+    def test_generate_collection_from_file(self):
+        self.help_generate_collection('file')
+
+    def test_generate_collection_from_db(self):
+        self.help_generate_collection('db')
+
+    def help_generate_collection(self, data_source: str):
+        collection = Helper.generate_collection(data_source, 'D:\Download\installed')
 
         self.assertEqual(collection.get_container(-1), None)
 
@@ -120,10 +126,19 @@ class TesterUnittest(unittest.TestCase):
 
         self.assertEqual(collection.get_container(3), None)
 
-    def test_generate_collection_with_mock(self):
-        Helper.generate_content_list_from_file = MagicMock(return_value=self.mock_content_list)
+    def test_generate_collection_from_file_with_mock(self):
+        self.help_generate_collection_with_mock('file')
 
-        collection = Helper.generate_collection('file', 'mocked pass')
+    def test_generate_collection_from_db_with_mock(self):
+        self.help_generate_collection_with_mock('db')
+
+    def help_generate_collection_with_mock(self, data_source: str):
+        if data_source == 'file':
+            Helper.generate_content_list_from_file = MagicMock(return_value=self.mock_content_list)
+        elif data_source == 'db':
+            Helper.generate_content_list_from_db = MagicMock(return_value=self.mock_content_list)
+
+        collection = Helper.generate_collection(data_source, 'mocked pass')
 
         self.assertEqual(collection.get_container(-1), None)
 
