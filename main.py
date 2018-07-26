@@ -1,10 +1,9 @@
 import sys
-
-from PyCode.FileInfoCollection import FileInfoCollection
+from PyCode.Helper import Helper
 
 
 def execute(command_line_arg: str):
-    collection = FileInfoCollection(command_line_arg)
+    collection = Helper.generate_collection(command_line_arg)
     collection.display_collection_info()
 
 
