@@ -19,12 +19,12 @@ class Helper:
         :param dir_path:
         :return: collection
         """
-        
+
         content_list = ''
         if data_source == 'file':
             content_list = Helper.generate_content_list_from_file(dir_path)
         elif data_source == 'db':
-            content_list = Helper.generate_content_list_from_db(dir_path)
+            content_list = Helper.generate_content_list_from_db()
         container_list = Helper.generate_container_list(content_list)
         collection = FileInfoCollection(container_list)
 
@@ -56,7 +56,7 @@ class Helper:
         return content_pair_list
 
     @staticmethod
-    def generate_content_list_from_db(dir_path):
+    def generate_content_list_from_db():
         """파일명 list -> 경로+파일명 list -> 파일내용 list
 
         :param dir_path:
