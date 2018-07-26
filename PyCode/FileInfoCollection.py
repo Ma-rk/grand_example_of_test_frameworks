@@ -2,7 +2,7 @@ class FileInfoCollection:
     def __init__(self, file_info_container_list):
         self.file_info_container_list = file_info_container_list
 
-    def get(self, idx):
+    def get_container(self, idx):
         if idx < 0:
             return None  # todo: 익셉션 IndexError 를 처리하도록 변경
         if len(self.file_info_container_list) <= idx:
