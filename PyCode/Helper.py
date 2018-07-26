@@ -1,5 +1,7 @@
 import os
 
+from PyCode.FileInfoContainer import FileInfoContainer
+
 
 class Helper:
     @staticmethod
@@ -26,3 +28,17 @@ class Helper:
                 content_pair_list.append([full_file_name, content])
 
         return content_pair_list
+
+    @staticmethod
+    def generate_container_list(content_list):
+        """container list
+
+        :param content_list:
+        :return:
+        """
+        container_list = []
+        for content_pair in content_list:
+            container = FileInfoContainer(content_pair)
+            container_list.append(container)
+
+        return container_list
