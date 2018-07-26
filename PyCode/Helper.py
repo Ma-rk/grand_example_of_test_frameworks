@@ -6,18 +6,23 @@ from PyCode.FileInfoContainer import FileInfoContainer
 
 class Helper:
     @staticmethod
-    def generate_collection(dir_path):
+    def generate_collection(data_source: str, dir_path: str):
         """ FileInfoCollection 객체를 생성하여 리턴
 
         1. 파일명 list -> 경로+파일명 list -> 파일내용 list
         2. container list
         3. collection
 
+        :param data_source:
         :param dir_path:
         :return: collection
         """
         
+        content_list = ''
+        if data_source == 'file':
             content_list = Helper.generate_content_list_from_file(dir_path)
+        elif data_source == 'db':
+            content_list = Helper.generate_content_list_from_db(dir_path)
         container_list = Helper.generate_container_list(content_list)
         collection = FileInfoCollection(container_list)
 
