@@ -1,5 +1,7 @@
 import os
 
+import pymysql
+
 from PyCode.FileInfoCollection import FileInfoCollection
 from PyCode.FileInfoContainer import FileInfoContainer
 
@@ -50,6 +52,26 @@ class Helper:
             with open(full_file_name, 'r') as f:
                 content = f.readlines()
                 content_pair_list.append([full_file_name, content])
+
+        return content_pair_list
+
+    @staticmethod
+    def generate_content_list_from_db(dir_path):
+        """파일명 list -> 경로+파일명 list -> 파일내용 list
+
+        :param dir_path:
+        :return: 파일내용 list
+        """
+
+        content_pair_list = []
+
+        conn = pymysql.connect(host='', user='', password='', db='', charset='utf8')
+        curs = conn.cursor()
+        curs.execute('this is not a qry')
+        rows = curs.fetchall()
+        print()
+        print(rows)
+        conn.close()
 
         return content_pair_list
 
