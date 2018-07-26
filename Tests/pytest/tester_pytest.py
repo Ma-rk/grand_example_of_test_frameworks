@@ -5,7 +5,7 @@ from PyCode.Helper import Helper
 
 class TestClass:
     def test_generate_content_list(self):
-        content_pair_list = Helper.generate_content_list('D:\Download\installed')
+        content_pair_list = Helper.generate_content_list_from_file('D:\Download\installed')
         for content_pair in content_pair_list:
             assert len(content_pair) == 2
             assert type(content_pair) == list
@@ -13,7 +13,7 @@ class TestClass:
             assert type(content_pair[1]) == list
 
     def test_generate_container_list(self):
-        content_pair_list = Helper.generate_content_list('D:\Download\installed')
+        content_pair_list = Helper.generate_content_list_from_file('D:\Download\installed')
 
         container_list = Helper.generate_container_list(content_pair_list)
 
@@ -38,7 +38,7 @@ class TestClass:
         assert container.num_of_method == 1
 
     def test_generate_collection(self):
-        collection = Helper.generate_collection('D:\Download\installed')
+        collection = Helper.generate_collection('file', 'D:\Download\installed')
 
         assert collection.get_container(-1) is None
 
@@ -80,9 +80,9 @@ class TestClass:
                       ['from calc import Calc1\n', '\n', '\n', 'def test_add(:\n', '    ut_calc1 = Calc1(\n',
                        '    assert ut_calc1.add(4, 6 == 10\n', '\n', 'class YourClass:\n', '    pass\n', '\n']]]
 
-        Helper.generate_content_list = MagicMock(return_value=mock_list)
+        Helper.generate_content_list_from_file = MagicMock(return_value=mock_list)
 
-        collection = Helper.generate_collection('mocked pass')
+        collection = Helper.generate_collection('file', 'mocked pass')
 
         assert collection.get_container(-1) is None
 

@@ -9,6 +9,55 @@ class TesterUnittest(unittest.TestCase):
         self.org_generate_content_list_from_file = Helper.generate_content_list_from_file
         self.org_generate_content_list_from_db = Helper.generate_content_list_from_db
 
+        self.mock_content_list = [['mocked pass\\calc.py',
+                                   ['class Calc1:\n',
+                                    '    def add(self, num_a, num_b):\n',
+                                    '        """\n',
+                                    '\n',
+                                    '        :param num_a: 1st no\n',
+                                    '        :param num_b: 2nd no\n',
+                                    '        :return: sum of two numbers\n',
+                                    '        """\n',
+                                    '        num_result = num_a+num_b\n',
+                                    '        return num_result\n',
+                                    '\n',
+                                    '    def subtract(self, num_a, num_b):\n',
+                                    '        num_result = num_a-num_b\n',
+                                    '        return num_result\n',
+                                    '\n',
+                                    '\n',
+                                    'class Calc2:\n',
+                                    '    def multiply(self, num_a, num_b):\n',
+                                    '        num_result = num_a*num_b\n',
+                                    '        return num_result\n',
+                                    '\n',
+                                    '    def divide(self, num_a, num_b):\n',
+                                    '        num_result = num_a/num_b\n',
+                                    '        return num_result\n',
+                                    '\n',
+                                    '\n']],
+                                  ['mocked pass\\HandPy.py',
+                                   ['import sys\n',
+                                    '\n',
+                                    'print(sys.executable)\n',
+                                    '\n',
+                                    'x = 1000\n',
+                                    'y = 1000\n',
+                                    'print(x is y)\n']],
+                                  ['mocked pass\\py_calc_test.py',
+                                   ['from calc import Calc1\n',
+                                    '\n',
+                                    '\n',
+                                    'def test_add():\n',
+                                    '    ut_calc1 = Calc1()\n',
+                                    '    assert ut_calc1.add(4, 6) == 10\n',
+                                    '\n',
+                                    'class YourClass:\n',
+                                    '    pass\n',
+                                    '\n']
+                                   ]
+                                  ]
+
     def tearDown(self):
         Helper.generate_content_list_from_file = self.org_generate_content_list_from_file
         Helper.generate_content_list_from_db = self.org_generate_content_list_from_db
@@ -72,26 +121,9 @@ class TesterUnittest(unittest.TestCase):
         self.assertEqual(collection.get_container(3), None)
 
     def test_generate_collection_with_mock(self):
-        mock_list = [['mocked pass\\calc.py',
-                      ['class Calc1:\n', '    def add(self, num_a, num_b):\n', '        """\n', '\n',
-                       '        :param num_a: 1st no\n', '        :param num_b: 2nd no\n',
-                       '        :return: sum of two numbers\n', '        """\n', '        num_result = num_a+num_b\n',
-                       '        return num_result\n', '\n', '    def subtract(self, num_a, num_b):\n',
-                       '        num_result = num_a-num_b\n', '        return num_result\n', '\n', '\n',
-                       'class Calc2:\n', '    def multiply(self, num_a, num_b):\n',
-                       '        num_result = num_a*num_b\n', '        return num_result\n', '\n',
-                       '    def divide(self, num_a, num_b):\n', '        num_result = num_a/num_b\n',
-                       '        return num_result\n', '\n', '\n']], ['mocked pass\\HandPy.py',
-                                                                     ['import sys\n', '\n', 'print(sys.executable)\n',
-                                                                      '\n', 'x = 1000\n', 'y = 1000\n',
-                                                                      'print(x is y)\n']],
-                     ['mocked pass\\py_calc_test.py',
-                      ['from calc import Calc1\n', '\n', '\n', 'def test_add():\n', '    ut_calc1 = Calc1()\n',
-                       '    assert ut_calc1.add(4, 6) == 10\n', '\n', 'class YourClass:\n', '    pass\n', '\n']]]
+        Helper.generate_content_list_from_file = MagicMock(return_value=self.mock_content_list)
 
-        Helper.generate_content_list = MagicMock(return_value=mock_list)
-
-        collection = Helper.generate_collection('mocked pass')
+        collection = Helper.generate_collection('file', 'mocked pass')
 
         self.assertEqual(collection.get_container(-1), None)
 
